@@ -1,4 +1,4 @@
-package util;
+package common;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

@@ -1,9 +1,9 @@
 package dao;
 
+import common.JPAUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import modelo.Banco;
-import util.JPAUtil;
 
 import java.util.ArrayList;
 import java.util.List;

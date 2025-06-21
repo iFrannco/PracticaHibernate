@@ -1,25 +1,34 @@
 package service;
 
-
-import dao.BancoDAO;
+import common.Tx;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import modelo.Banco;
 import modelo.Usuario;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class BancoService {
+    private EntityManagerFactory emf;
 
-    private BancoDAO bancoDAO = new BancoDAO();
+    public BancoService(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
 
     public void crearBancoConUsuario(String nombreBanco, String nombreUsuario, String emailUsuario) {
-        Usuario usuario = new Usuario(nombreUsuario, emailUsuario);
-        Banco banco = new Banco(nombreBanco, usuario);
-
-        bancoDAO.guardarBanco(banco);
+        new Tx(emf).inTx(em -> {
+            Usuario usuario = new Usuario(nombreUsuario, emailUsuario);
+            Banco banco = new Banco(nombreBanco, usuario);
+            em.persist(banco);
+        });
     }
 
     public List<Banco> listarTodos() {
-        return bancoDAO.findAll();
+        Function<EntityManager, List<Banco>> consulta = em ->
+                em.createNativeQuery("SELECT * FROM bancos", Banco.class).getResultList();
+
+        return new Tx(emf).inTx(consulta);
     }
 }
 
