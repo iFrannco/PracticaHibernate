@@ -6,7 +6,7 @@ import jakarta.persistence.Persistence;
 public class JPAUtil {
 
     private static final EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("BancoPU");
+            Persistence.createEntityManagerFactory("PracticaHibernate");
 
     public static EntityManagerFactory getEntityManagerFactory() {
         return emf;

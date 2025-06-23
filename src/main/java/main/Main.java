@@ -14,7 +14,7 @@ public class Main {
         BancoService bancoService = new BancoService(em);
 
         // Crear un banco con un usuario
-        bancoService.crearBancoConUsuario("Banco Nacional", "Juan Pérez", "juan.perez@email.com");
+        // bancoService.crearBancoConUsuario("Banco Nacional", "Juan Pérez", "juan.perez@email.com");
 
         // Obtener todos los bancos
         System.out.println("-------------------------------------------------------------------------------------------");
