@@ -2,26 +2,25 @@ package main;
 
 import common.JPAUtil;
 import jakarta.persistence.EntityManagerFactory;
-import modelo.Banco;
-import service.BancoService;
+import modelo.Api;
+import modelo.CuentaBancaria;
 
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
         EntityManagerFactory em = JPAUtil.getEntityManagerFactory();
-        BancoService bancoService = new BancoService(em);
+        Api api = new Api(em);
 
         // Crear un banco con un usuario
-        // bancoService.crearBancoConUsuario("Banco Nacional", "Juan Pérez", "juan.perez@email.com");
+        api.crearCuentaBancaria("33333333", "Gustavo", "gus111@email.com");
 
-        // Obtener todos los bancos
+        // Obtener todas las cuentas bancarias
         System.out.println("-------------------------------------------------------------------------------------------");
-        System.out.println("Lista de bancos");
-        List<Banco> bancos = bancoService.listarTodos();
-        for (Banco banco : bancos) {
-            System.out.println(banco);
+        System.out.println("Lista de Cuentas Bancarias");
+        List<CuentaBancaria> cuentaBancarias = api.listarCuentasBancarias();
+        for (CuentaBancaria cuentaBancaria : cuentaBancarias) {
+            System.out.println(cuentaBancaria);
         }
     }
 }

@@ -6,7 +6,7 @@
 
     <persistence-unit name="PracticaHibernate" transaction-type="RESOURCE_LOCAL">
         <class>modelo.Usuario</class>
-        <class>modelo.Banco</class>
+        <class>modelo.CuentaBancaria</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
