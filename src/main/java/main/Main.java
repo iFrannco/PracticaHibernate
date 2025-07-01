@@ -12,8 +12,8 @@ public class Main {
         EntityManagerFactory em = JPAUtil.getEntityManagerFactory();
         Api api = new Api(em);
 
-        // Crear un banco con un usuario
-        api.crearCuentaBancaria("33333333", "Gustavo", "gus111@email.com");
+        // Crear una cuenta bancaria
+        api.crearCuentaBancaria("33333333", "Gustavo", "gus123@email.com");
 
         // Obtener todas las cuentas bancarias
         System.out.println("-------------------------------------------------------------------------------------------");
